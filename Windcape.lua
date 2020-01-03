@@ -16,4 +16,5 @@ end
 
 function Windcape:OnEnable()
 	self:WorldMap_OnEnable()
+	self:Chat_OnEnable()
 end

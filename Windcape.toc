@@ -10,3 +10,4 @@ Libs\embeds.xml
 
 Windcape.lua
 WorldMap.lua
+Chat.lua
