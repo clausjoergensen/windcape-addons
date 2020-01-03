@@ -1,0 +1,12 @@
+## Interface: 11303
+## Version: 1.0.0
+## Title: Windcape
+## Author: Windcape
+## Notes: Windcape's AddOns
+## Dependencies: Blizzard_WorldMap
+## SavedVariables: WindcapeDB
+
+Libs\embeds.xml
+
+Windcape.lua
+WorldMap.lua
