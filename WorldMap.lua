@@ -5,27 +5,27 @@ local LibWindow = LibStub("LibWindow-1.1")
 function Windcape:WorldMap_OnEnable()
 	LibWindow.RegisterConfig(WorldMapFrame, self.db.char)
 
-	self:SecureHookScript(WorldMapFrame, 
-		"OnDragStart", 
+	self:SecureHookScript(WorldMapFrame,
+		"OnDragStart",
 		"WorldMapFrame_OnDragStart")
 	
-	self:SecureHookScript(WorldMapFrame, 
-		"OnDragStop", 
+	self:SecureHookScript(WorldMapFrame,
+		"OnDragStop",
 		"WorldMapFrame_OnDragStop")
 	
-	self:RawHook(WorldMapFrame, 
-		"HandleUserActionToggleSelf", 
-		"WorldMapFrame_HandleUserActionToggleSelf", 
+	self:RawHook(WorldMapFrame,
+		"HandleUserActionToggleSelf",
+		"WorldMapFrame_HandleUserActionToggleSelf",
 		true)
 	
-	self:RawHook(WorldMapFrame.ScrollContainer, 
-		"GetCursorPosition", 
-		"WorldMapFrame_ScrollContainer_GetCursorPosition", 
-		true)
+	-- self:RawHook(WorldMapFrame.ScrollContainer,
+	-- 	"GetCursorPosition",
+	-- 	"WorldMapFrame_ScrollContainer_GetCursorPosition",
+	-- 	true)
 
 	if WorldMapFrame.SynchronizeDisplayState then
-		self:SecureHook(WorldMapFrame, 
-			"SynchronizeDisplayState", 
+		self:SecureHook(WorldMapFrame,
+			"SynchronizeDisplayState",
 			"WorldMapFrame_SynchronizeDisplayState")
 	end
 
@@ -63,9 +63,9 @@ function Windcape:WorldMapFrame_RestorePosition()
 end
 
 function Windcape:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
-    local x, y = MapCanvasScrollControllerMixin.GetCursorPosition(frame)
-    local scale = frame:GetScale() * UIParent:GetEffectiveScale()
-    return x / scale, y / scale
+	local x, y = MapCanvasScrollControllerMixin:GetCursorPosition(frame)
+	local scale = frame:GetScale() * UIParent:GetEffectiveScale()
+	return x / scale, y / scale
 end
 
 function Windcape:WorldMapFrame_HandleUserActionToggleSelf(frame) 

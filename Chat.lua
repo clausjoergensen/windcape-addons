@@ -17,18 +17,18 @@ function Windcape:ChatFrame_UpdateLayout()
 		chatFrame:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
 		chatFrame:SetClampedToScreen(false)
 
-      	_G[chatFrame:GetName() .. "EditBoxLeft"]:Hide()
-      	_G[chatFrame:GetName() .. "EditBoxRight"]:Hide()
-      	_G[chatFrame:GetName() .. "EditBoxMid"]:Hide()
+		_G[chatFrame:GetName() .. "EditBoxLeft"]:Hide()
+		_G[chatFrame:GetName() .. "EditBoxRight"]:Hide()
+		_G[chatFrame:GetName() .. "EditBoxMid"]:Hide()
 
-        local chatFrameEditBox = _G[chatFrame:GetName() .. "EditBox"]
-        chatFrameEditBox:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
-        chatFrameEditBox["SetAltArrowKeyMode"](chatFrameEditBox, false)
+		local chatFrameEditBox = _G[chatFrame:GetName() .. "EditBox"]
+		chatFrameEditBox:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
+		chatFrameEditBox["SetAltArrowKeyMode"](chatFrameEditBox, false)
 		chatFrameEditBox:ClearAllPoints()
 		chatFrameEditBox:SetPoint('BOTTOMLEFT',  chatFrame:GetName(), 'TOPLEFT',  -5, 0)
 		chatFrameEditBox:SetPoint('BOTTOMRIGHT', chatFrame:GetName(), 'TOPRIGHT', 5, 0)
 
-        local chatFrameEditBoxHeader = _G[chatFrameEditBox:GetName() .. "Header"]
-        chatFrameEditBoxHeader:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
+		local chatFrameEditBoxHeader = _G[chatFrameEditBox:GetName() .. "Header"]
+		chatFrameEditBoxHeader:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
 	end
 end
