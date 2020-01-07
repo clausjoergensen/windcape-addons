@@ -29,6 +29,7 @@ function Windcape:ChatFrame_EnableClassColors()
 end
 
 function Windcape:ChatFrame_UpdateLayout()
+    local FONT = "Fonts\\FRIZQT__.TTF"
 	local FONT_SIZE = 14
 	
 	for i = 1, NUM_CHAT_WINDOWS do
@@ -41,7 +42,7 @@ function Windcape:ChatFrame_UpdateLayout()
 		_G[chatFrame:GetName() .. "EditBoxMid"]:Hide()
 
 		local chatEditBoxFrame = _G[chatFrame:GetName() .. "EditBox"]
-		chatEditBoxFrame:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
+		chatEditBoxFrame:SetFont(FONT, FONT_SIZE, nil)
 		chatEditBoxFrame["SetAltArrowKeyMode"](chatEditBoxFrame, false)
 		chatEditBoxFrame:ClearAllPoints()
 		chatEditBoxFrame:SetPoint('BOTTOMLEFT',  chatFrame:GetName(), 'TOPLEFT',  -5, 0)
