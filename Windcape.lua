@@ -18,3 +18,8 @@ function Windcape:OnEnable()
 	self:WorldMap_OnEnable()
 	self:Chat_OnEnable()
 end
+
+function Windcape:OnDisable()
+	self:WorldMap_OnDisable()
+	self:Chat_OnDisable()
+end

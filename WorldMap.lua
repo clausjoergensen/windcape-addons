@@ -50,6 +50,9 @@ function Windcape:WorldMap_OnEnable()
 	self:WorldMapFrame_RestorePosition()
 end
 
+function Windcape:WorldMap_OnDisable()
+end
+
 function Windcape:WorldMapFrame_SetScale()
 	WorldMapFrame:SetScale(1.0)
 end
