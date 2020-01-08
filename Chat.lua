@@ -34,7 +34,7 @@ function Windcape:ChatFrame_UpdateLayout()
 	
 	for i = 1, NUM_CHAT_WINDOWS do
 		local chatFrame = _G["ChatFrame" .. i]
-		chatFrame:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
+		chatFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, nil)
 		chatFrame:SetClampedToScreen(false)
 
 		_G[chatFrame:GetName() .. "EditBoxLeft"]:Hide()
