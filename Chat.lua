@@ -29,7 +29,6 @@ function Windcape:ChatFrame_EnableClassColors()
 end
 
 function Windcape:ChatFrame_UpdateLayout()
-    local FONT = "Fonts\\FRIZQT__.TTF"
 	local FONT_SIZE = 14
 	
 	for i = 1, NUM_CHAT_WINDOWS do
