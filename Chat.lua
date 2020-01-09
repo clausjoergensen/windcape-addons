@@ -41,7 +41,7 @@ function Windcape:ChatFrame_UpdateLayout()
 		_G[chatFrame:GetName() .. "EditBoxMid"]:Hide()
 
 		local chatEditBoxFrame = _G[chatFrame:GetName() .. "EditBox"]
-		chatEditBoxFrame:SetFont(FONT, FONT_SIZE, nil)
+		chatEditBoxFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, nil)
 		chatEditBoxFrame["SetAltArrowKeyMode"](chatEditBoxFrame, false)
 		chatEditBoxFrame:ClearAllPoints()
 		chatEditBoxFrame:SetPoint('BOTTOMLEFT',  chatFrame:GetName(), 'TOPLEFT',  -5, 0)
