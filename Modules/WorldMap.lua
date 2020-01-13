@@ -18,10 +18,10 @@ function Windcape:WorldMap_OnEnable()
 		"WorldMapFrame_HandleUserActionToggleSelf",
 		true)
 	
-	-- self:RawHook(WorldMapFrame.ScrollContainer,
-	-- 	"GetCursorPosition",
-	-- 	"WorldMapFrame_ScrollContainer_GetCursorPosition",
-	-- 	true)
+	self:RawHook(WorldMapFrame.ScrollContainer,
+		"GetCursorPosition",
+		"WorldMapFrame_ScrollContainer_GetCursorPosition",
+		true)
 
 	if WorldMapFrame.SynchronizeDisplayState then
 		self:SecureHook(WorldMapFrame,
