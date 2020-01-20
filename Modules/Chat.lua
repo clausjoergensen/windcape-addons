@@ -1,32 +1,11 @@
 -- Copyright (c) 2020 Claus Jørgensen
 
 local showingTooltip = false
-local DEFAULT_CHAT_FRAME_ADD_MESSAGE = DEFAULT_CHAT_FRAME.AddMessage
 
 function Windcape:Chat_OnEnable()
-	-- local filter = function(frame, event, message, ...)
-	-- 	local frameName = frame:GetName()
-	-- 	self.db.char.scrollback[frameName] = self.db.char.scrollback[frameName] or {}
-		
-	-- 	local scrollback = self.db.char.scrollback[frameName]
-	-- 	table.insert(scrollback, { message, ... })
-
-	-- 	self.db.char.scrollbackTime = time()
-	-- 	if #scrollback > self.db.char.scrollbackLength then
-	-- 		table.remove(scrollback, 1)
-	-- 	end
-
-	-- 	return false
-	-- end
-
-	-- ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", filter)
-
-	DEFAULT_CHAT_FRAME["AddMessage"] = self:ChatFrame_OnChatMessage
-
 	self:Chat_UpdateLayout()
 	self:Chat_EnableClassColors()
 	self:Chat_EnableHoverTips()
-	self:Chat_RestoreLastSession()
 end
 
 function Windcape:Chat_OnDisable()
@@ -100,42 +79,3 @@ function Windcape:Chat_EnableHoverTips()
 		end)
 	end
 end
-
-function Windcape:Chat_RestoreLastSession()
-	local textAdded = false
-	print(pairs(self.db.char.scrollback))
-	for key, history in pairs(self.db.char.scrollback) do
-		local frame = _G[key]
-		print(frame)
-		if frame then
-			for _, line in ipairs(history) do
-				frame:AddMessage(unpack(line))
-				textAdded = true
-			end
-
-			if textAdded then
-				frame:AddMessage(format(TIME_DAYHOURMINUTESECOND,
-								 ChatFrame_TimeBreakDown(time() - self.db.char.scrollbackTime)))
-			end
-		end
-	end
-end
-
-function Windcape:ChatFrame_OnChatMessage(info, message, frame, event, text, r, g, b, id, ...)
-	local frameName = frame:GetName()
-	self.scrollback[frameName] = self.scrollback[frameName] or {}
-	
-	local scrollback = self.scrollback[frameName]
-	table.insert(scrollback, { text, r, g, b, id, ... })
-
-	self.db.char.scrollbackTime = time()
-	if #scrollback > self.db.profile.scrollbackLength then
-		table.remove(scrollback, 1)
-	end
-end
-
--- function Windcape:ChatFrame_MessageEventHandler(event, ...)
--- 	if (strsub(event, 1, 8) == "CHAT_MSG") then
--- 		self:ChatFrame_OnChatMessage(...)
--- 	end
--- end
