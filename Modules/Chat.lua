@@ -1,14 +1,25 @@
 -- Copyright (c) 2020 Claus Jørgensen
 
 local COMBAT_LOG_FRAME_INDEX = 2
+local CHAT_HISTORY_MAX_LENGTH = 10
 local showingTooltip = false
+
+-- SLASH_WIND1 = "/wind"
+
+-- function SlashCmdList.WIND(command)
+-- 	if command == "" then
+-- 	    Windcape:Chat_OnPlayerLogout()
+-- 	else 
+-- 	    Windcape:Chat_RestoreLastSession()
+-- 	end
+-- end
 
 function Windcape:Chat_OnEnable()
 	self:Chat_UpdateLayout()
 	self:Chat_EnableClassColors()
 	self:Chat_EnableHoverTips()
 	self:Chat_EnableHistory()
-	self:Chat_RestoreLastSession()
+	-- self:Chat_RestoreLastSession()
 end
 
 function Windcape:Chat_OnDisable()
@@ -21,7 +32,7 @@ function Windcape:Chat_OnDisable()
 end
 
 function Windcape:Chat_EnableHistory()
-	self:RegisterEvent("PLAYER_LOGOUT", "Chat_OnPlayerLogout")
+	--self:RegisterEvent("PLAYER_LOGOUT", "Chat_OnPlayerLogout")
 end
 
 function Windcape:Chat_EnableClassColors()
@@ -93,8 +104,7 @@ function Windcape:Chat_RestoreLastSession()
 	end
 
 	local now = GetTime()
-
-	for frameName, history in next, self.db.char.scrollback do
+	for frameName, history in pairs(self.db.char.scrollback) do
 		local chatFrame = _G[frameName]
 		if chatFrame then
 			local historyBuffer = chatFrame.historyBuffer
@@ -123,23 +133,16 @@ function Windcape:Chat_RestoreLastSession()
 end
 
 function Windcape:Chat_OnPlayerLogout()
-	for i = 1, NUM_CHAT_WINDOWS do
+	for i = 1, 1 do -- NUM_CHAT_WINDOWS
 		if i ~= COMBAT_LOG_FRAME_INDEX then
 			local chatFrame = _G["ChatFrame" .. i]
 			local historyBuffer = chatFrame.historyBuffer
-			local historyTable = { 1, 2, 3, 4, 5 }
+			local historyTable = { }
 			
-			local t = #historyTable
-			for e = historyBuffer.headIndex, -10, -1 do
+			for e = historyBuffer.headIndex, -CHAT_HISTORY_MAX_LENGTH, -1 do
 				if e > 0 then
-					if t > 0 and type(historyBuffer.elements[e]) == "table" and historyBuffer.elements[e].message then
-						historyTable[t] = historyBuffer.elements[e]
-						t = t - 1
-					end
-				else
-					if t > 0 then
-						tremove(historyTable, t)
-						t = t - 1
+					if type(historyBuffer.elements[e]) == "table" and historyBuffer.elements[e].message then
+						table.insert(historyTable, historyBuffer.elements[e])
 					end
 				end
 			end
