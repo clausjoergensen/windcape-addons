@@ -12,3 +12,4 @@ Windcape.lua
 
 Modules\WorldMap.lua
 Modules\Chat.lua
+Modules\Sound.lua
