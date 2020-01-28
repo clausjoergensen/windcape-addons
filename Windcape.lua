@@ -21,9 +21,11 @@ end
 function Windcape:OnEnable()
 	self:WorldMap_OnEnable()
 	self:Chat_OnEnable()
+	self:AutoRepair_OnEnable()
 end
 
 function Windcape:OnDisable()
 	self:WorldMap_OnDisable()
 	self:Chat_OnDisable()
+	self:AutoRepair_OnDisable()
 end
