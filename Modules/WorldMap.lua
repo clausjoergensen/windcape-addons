@@ -96,7 +96,9 @@ function Windcape:WorldMapFrame_OnDragStop(frame)
 end
 
 function Windcape:WorldMapFrame_EnableCoordinates()
-	self.coordinatesFrame = CreateFrame("Frame", "Windcape_CoordsFrame", WorldMapFrame.ScrollContainer)
+	self.coordinatesFrame = CreateFrame("Frame", 
+		"Windcape_CoordsFrame", 
+		WorldMapFrame.ScrollContainer)
 
 	self.cursorText = self.coordinatesFrame:CreateFontString(nil, "OVERLAY")
 	self.cursorText:SetFont(GameFontNormal:GetFont(), 11, "OUTLINE")
@@ -108,7 +110,9 @@ function Windcape:WorldMapFrame_EnableCoordinates()
 	self.playerText:SetTextColor(1, 1, 1)
 	self.playerText:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "BOTTOM", -30, -8)
 
-	self:HookScript(self.coordinatesFrame, "OnUpdate", "CoordinatesFrame_OnUpdate")
+	self:HookScript(self.coordinatesFrame, 
+		"OnUpdate", 
+		"CoordinatesFrame_OnUpdate")
 
 	self.coordinatesFrame:Show()
 end
@@ -146,7 +150,6 @@ function Windcape:CoordinatesFrame_UpdatePlayerCoordinates()
 	end
 	
 	local playerX, playerY = playerMapPosition:GetXY()
-
 	if not playerX or playerX == 0 then
 		self.playerText:SetText("")
 	else
