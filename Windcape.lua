@@ -10,11 +10,7 @@ Windcape = LibStub("AceAddon-3.0"):NewAddon("Windcape",
 
 function Windcape:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("WindcapeDB", {
-		char = { 
-			scrollback = { },
-			scrollbackTime = 0,
-			scrollbackLength = 50
-		}
+		char = { }
 	}, true)
 end
 
