@@ -29,6 +29,7 @@ function Windcape:WorldMap_OnEnable()
             "WorldMapFrame_SynchronizeDisplayState")
     end
 
+    WorldMapFrame.BlackoutFrame:EnableMouse(false)
     WorldMapFrame.BlackoutFrame:Hide()
     WorldMapFrame:EnableMouse(true)
     WorldMapFrame:RegisterForDrag("LeftButton")
