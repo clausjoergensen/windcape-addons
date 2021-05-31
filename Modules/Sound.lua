@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Claus Jørgensen
+-- Copyright (c) 2021 Claus Jørgensen
 
 SLASH_SFX1 = "/sfx"
 

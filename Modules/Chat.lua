@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Claus Jørgensen
+-- Copyright (c) 2021 Claus Jørgensen
 
 local COMBAT_LOG_FRAME_INDEX = 2
 local CHAT_HISTORY_MAX_LENGTH = 10
@@ -24,8 +24,8 @@ function Windcape:Chat_EnableClassColors()
 end
 
 function Windcape:Chat_UpdateLayout()
-	local FONT_SIZE = 14
-	
+	local FONT_SIZE = 12
+
 	for i = 1, NUM_CHAT_WINDOWS do
 		local chatFrame = _G["ChatFrame" .. i]
 		chatFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, nil)
@@ -64,15 +64,15 @@ function Windcape:Chat_EnableHoverTips()
 
 			if linkTypes[linkType] then
 				showingTooltip = true
-				
+
 				ShowUIPanel(GameTooltip)
-				
+
 				GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
 				GameTooltip:SetHyperlink(link)
 				GameTooltip:Show()
 			end
 		end)
-		
+
 		self:HookScript(chatFrame, "OnHyperlinkLeave", function(frame, link)
 			if showingTooltip then
 				showingTooltip = false

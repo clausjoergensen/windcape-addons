@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Claus Jørgensen
+-- Copyright (c) 2021 Claus Jørgensen
 
 local LibWindow = LibStub("LibWindow-1.1")
 
@@ -8,16 +8,16 @@ function Windcape:WorldMap_OnEnable()
 	self:SecureHookScript(WorldMapFrame,
 		"OnDragStart",
 		"WorldMapFrame_OnDragStart")
-	
+
 	self:SecureHookScript(WorldMapFrame,
 		"OnDragStop",
 		"WorldMapFrame_OnDragStop")
-	
+
 	self:RawHook(WorldMapFrame,
 		"HandleUserActionToggleSelf",
 		"WorldMapFrame_HandleUserActionToggleSelf",
 		true)
-	
+
 	self:RawHook(WorldMapFrame.ScrollContainer,
 		"GetCursorPosition",
 		"WorldMapFrame_ScrollContainer_GetCursorPosition",
@@ -42,7 +42,7 @@ function Windcape:WorldMap_OnEnable()
 	-- removes the world map from the default panel system
 	-- which is necessary in order to set a custom position
 	UIPanelWindows["WorldMapFrame"] = nil
-	
+
 	-- allows dismissing the map with esc
 	table.insert(UISpecialFrames, "WorldMapFrame")
 
@@ -73,12 +73,12 @@ function Windcape:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
 	return x / scale, y / scale
 end
 
-function Windcape:WorldMapFrame_HandleUserActionToggleSelf(frame) 
+function Windcape:WorldMapFrame_HandleUserActionToggleSelf(frame)
 	if frame:IsShown() then
 		frame:Hide()
-	else 
-		frame:Show() 
-	end 
+	else
+		frame:Show()
+	end
 end
 
 function Windcape:WorldMapFrame_SynchronizeDisplayState(frame)
@@ -90,14 +90,14 @@ function Windcape:WorldMapFrame_OnDragStart(frame)
 	frame:StartMoving()
 end
 
-function Windcape:WorldMapFrame_OnDragStop(frame) 
+function Windcape:WorldMapFrame_OnDragStop(frame)
 	frame:StopMovingOrSizing()
 	self:WorldMapFrame_SavePosition()
 end
 
 function Windcape:WorldMapFrame_EnableCoordinates()
-	self.coordinatesFrame = CreateFrame("Frame", 
-		"Windcape_CoordsFrame", 
+	self.coordinatesFrame = CreateFrame("Frame",
+		"Windcape_CoordsFrame",
 		WorldMapFrame.ScrollContainer)
 
 	self.cursorText = self.coordinatesFrame:CreateFontString(nil, "OVERLAY")
@@ -110,8 +110,8 @@ function Windcape:WorldMapFrame_EnableCoordinates()
 	self.playerText:SetTextColor(1, 1, 1)
 	self.playerText:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "BOTTOM", -30, -8)
 
-	self:HookScript(self.coordinatesFrame, 
-		"OnUpdate", 
+	self:HookScript(self.coordinatesFrame,
+		"OnUpdate",
 		"CoordinatesFrame_OnUpdate")
 
 	self.coordinatesFrame:Show()
@@ -148,7 +148,7 @@ function Windcape:CoordinatesFrame_UpdatePlayerCoordinates()
 	if not playerMapPosition then
 		return
 	end
-	
+
 	local playerX, playerY = playerMapPosition:GetXY()
 	if not playerX or playerX == 0 then
 		self.playerText:SetText("")
@@ -164,8 +164,8 @@ function Windcape:WorldMapFrame_GetMouseCoordinates()
 	local width = scrollContainerChild:GetWidth()
 	local height = scrollContainerChild:GetHeight()
 	local scale = scrollContainerChild:GetEffectiveScale()
-	
-	if not left or not top then 
+
+	if not left or not top then
 		return
 	end
 

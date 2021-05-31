@@ -1,24 +1,26 @@
--- Copyright (c) 2020 Claus Jørgensen
-
-local autoRepairFrame = CreateFrame("Frame")
+-- Copyright (c) 2021 Claus Jørgensen
 
 function Windcape:AutoRepair_OnEnable()
-	autoRepairFrame:SetScript("OnEvent", (function(self, event, ...)
-		if event == "MERCHANT_SHOW" and CanMerchantRepair() == true then
-			repairAllCost, canRepair = GetRepairAllCost()
-			if canRepair then
-				if repairAllCost <= GetMoney() then
-					RepairAllItems()
-					DEFAULT_CHAT_FRAME:AddMessage("Your items have been repaired for " .. GetCoinText(repairAllCost,", ") .. ".", 255, 255, 0)
-				else
-					DEFAULT_CHAT_FRAME:AddMessage("You don't have enough money for repair!", 255, 0, 0)
-				end
-			end
-		end
-	end))
-	autoRepairFrame:RegisterEvent("MERCHANT_SHOW")
+	self:RegisterEvent("MERCHANT_SHOW", "AutoRepair_MerchantShow")
 end
 
 function Windcape:AutoRepair_OnDisable()
-	autoRepairFrame:SetScript("OnEvent", nil)
+end
+
+function Windcape:AutoRepair_MerchantShow()
+	if not CanMerchantRepair() then
+		return
+	end
+
+	repairAllCost, canRepair = GetRepairAllCost()
+	if not canRepair then
+		return
+	end
+
+	if repairAllCost <= GetMoney() then
+		RepairAllItems()
+		DEFAULT_CHAT_FRAME:AddMessage("Your items have been repaired for " .. GetCoinText(repairAllCost,", ") .. ".", 255, 255, 0)
+	else
+		DEFAULT_CHAT_FRAME:AddMessage("You don't have enough money to repair!", 255, 0, 0)
+	end
 end

@@ -1,4 +1,4 @@
-## Interface: 11303
+## Interface: 20501
 ## Version: 1.0.0
 ## Title: Windcape
 ## Author: Windcape
@@ -14,3 +14,4 @@ Modules\WorldMap.lua
 Modules\Chat.lua
 Modules\Sound.lua
 Modules\AutoRepair.lua
+Modules\Buffs.lua
