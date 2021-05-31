@@ -3,7 +3,7 @@
 local Masque = LibStub("Masque", true)
 
 function Windcape:Buffs_OnEnable()
-	self:SecureHook("UIParent_UpdateTopFramePositions", "Buffs_Move")
+    self:SecureHook("UIParent_UpdateTopFramePositions", "Buffs_Move")
 
     if Masque then
         self.buffs = Masque:Group("Windcape", "Buffs")
@@ -12,16 +12,16 @@ function Windcape:Buffs_OnEnable()
 
         self:RegisterEvent("PLAYER_ENTERING_WORLD", "Buffs_PlayerEnteringWorld")
         self:SecureHook("CreateFrame", "Buffs_CreateFrame")
-	end
+    end
 end
 
 function Windcape:Buffs_OnDisable()
 end
 
 function Windcape:Buffs_Move()
-	BuffFrame:ClearAllPoints()
-	BuffFrame:SetScale(1.0)
-	BuffFrame:SetPoint("TOPRIGHT", "Minimap", "TOPLEFT", -10, 0)
+    BuffFrame:ClearAllPoints()
+    BuffFrame:SetScale(1.0)
+    BuffFrame:SetPoint("TOPRIGHT", "Minimap", "TOPLEFT", -10, 0)
 end
 
 function Windcape:Buffs_PlayerEnteringWorld()
@@ -54,10 +54,10 @@ function Windcape:Buffs_CreateFrame(_, name, parent)
     end
 
     if strfind(name, "^DebuffButton%d+$") then
-		self.debuffs:AddButton(_G[name])
-		self.debuffs:ReSkin()
-	elseif strfind(name, "^BuffButton%d+$") then
-		self.buffs:AddButton(_G[name])
-		self.buffs:ReSkin()
-	end
+        self.debuffs:AddButton(_G[name])
+        self.debuffs:ReSkin()
+    elseif strfind(name, "^BuffButton%d+$") then
+        self.buffs:AddButton(_G[name])
+        self.buffs:ReSkin()
+    end
 end
