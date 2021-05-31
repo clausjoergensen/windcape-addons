@@ -5,6 +5,7 @@
 ## Notes: Windcape's AddOns
 ## Dependencies: Blizzard_WorldMap
 ## SavedVariables: WindcapeDB
+## OptionalDeps: Ace3, Masque
 
 Libs\embeds.xml
 
