@@ -1,7 +1,8 @@
 ## Interface: 20501
-## Version: 1.0.0
+## Version: 1.0.1
 ## Title: Windcape
-## Author: Windcape
+## Notes: Chat, Auto-Repair, World Map and Buff styling 
+## Author: Claus Jørgensen
 ## Notes: Windcape's AddOns
 ## Dependencies: Blizzard_WorldMap
 ## SavedVariables: WindcapeDB
