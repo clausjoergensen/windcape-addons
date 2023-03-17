@@ -14,7 +14,6 @@ Windcape.lua
 
 Modules\WorldMap.lua
 Modules\Chat.lua
-Modules\Sound.lua
 Modules\AutoRepair.lua
 Modules\Buffs.lua
 Modules\Tooltip.lua

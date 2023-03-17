@@ -5,6 +5,7 @@ function Windcape:Quests_OnEnable()
 end
 
 function Windcape:Quests_OnDisable()
+    self:unregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
 function Windcape:Quests_PlayerEnteringWorld() 

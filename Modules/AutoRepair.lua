@@ -5,6 +5,7 @@ function Windcape:AutoRepair_OnEnable()
 end
 
 function Windcape:AutoRepair_OnDisable()
+    self:UnregisterEvent("MERCHANT_SHOW")
 end
 
 function Windcape:AutoRepair_MerchantShow()

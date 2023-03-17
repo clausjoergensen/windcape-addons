@@ -16,6 +16,7 @@ function Windcape:Buffs_OnEnable()
 end
 
 function Windcape:Buffs_OnDisable()
+    self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
 function Windcape:Buffs_Move()
