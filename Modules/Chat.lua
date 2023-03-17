@@ -28,7 +28,7 @@ function Windcape:Chat_UpdateLayout()
 
     for i = 1, NUM_CHAT_WINDOWS do
         local chatFrame = _G["ChatFrame" .. i]
-        chatFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, nil)
+        chatFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, "")
         chatFrame:SetClampedToScreen(false)
 
         _G[chatFrame:GetName() .. "EditBoxLeft"]:Hide()
@@ -36,14 +36,14 @@ function Windcape:Chat_UpdateLayout()
         _G[chatFrame:GetName() .. "EditBoxMid"]:Hide()
 
         local chatEditBoxFrame = _G[chatFrame:GetName() .. "EditBox"]
-        chatEditBoxFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, nil)
+        chatEditBoxFrame:SetFont(_G.STANDARD_TEXT_FONT, FONT_SIZE, "")
         chatEditBoxFrame["SetAltArrowKeyMode"](chatEditBoxFrame, false)
         chatEditBoxFrame:ClearAllPoints()
         chatEditBoxFrame:SetPoint('BOTTOMLEFT',  chatFrame:GetName(), 'TOPLEFT',  -5, 0)
         chatEditBoxFrame:SetPoint('BOTTOMRIGHT', chatFrame:GetName(), 'TOPRIGHT', 5, 0)
 
         local chatEditBoxHeaderFrame = _G[chatEditBoxFrame:GetName() .. "Header"]
-        chatEditBoxHeaderFrame:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, nil)
+        chatEditBoxHeaderFrame:SetFont("Fonts\\FRIZQT__.TTF", FONT_SIZE, "")
     end
 end
 

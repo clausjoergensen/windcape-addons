@@ -1,4 +1,4 @@
-## Interface: 20501
+## Interface: 30400
 ## Version: 1.0.1
 ## Title: Windcape
 ## Notes: Chat, Auto-Repair, World Map and Buff styling 
@@ -17,3 +17,6 @@ Modules\Chat.lua
 Modules\Sound.lua
 Modules\AutoRepair.lua
 Modules\Buffs.lua
+Modules\Tooltip.lua
+Modules\Quests.lua
+Modules\AutoInvite.lua

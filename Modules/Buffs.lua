@@ -9,10 +9,10 @@ function Windcape:Buffs_OnEnable()
         self.buffs = Masque:Group("Windcape", "Buffs")
         self.debuffs = Masque:Group("Windcape", "Debuffs")
         self.tmpEnchants = Masque:Group("Windcape", "Temp Enchants")
-
-        self:RegisterEvent("PLAYER_ENTERING_WORLD", "Buffs_PlayerEnteringWorld")
-        self:SecureHook("CreateFrame", "Buffs_CreateFrame")
     end
+
+    self:RegisterEvent("PLAYER_ENTERING_WORLD", "Buffs_PlayerEnteringWorld")
+    self:SecureHook("CreateFrame", "Buffs_CreateFrame")
 end
 
 function Windcape:Buffs_OnDisable()
