@@ -1,9 +1,10 @@
 -- Copyright (c) 2023 Claus Jørgensen
 
-function ON_CHAT_MSG_WHISPER(self, event, message, sender)
-    if strtrim(message):lower() == "inv" then
+local function ON_CHAT_MSG_WHISPER(self, event, message, sender)
+    if (strtrim(message):lower() == "inv") or (strtrim(message):lower() == "invite") then
         InviteUnit(sender)
     end
+    return false
 end
 
 function Windcape:AutoInvite_OnEnable()

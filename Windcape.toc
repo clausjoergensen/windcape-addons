@@ -19,3 +19,4 @@ Modules\Buffs.lua
 Modules\Tooltip.lua
 Modules\Quests.lua
 Modules\AutoInvite.lua
+Modules\Masque.lua
