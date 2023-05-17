@@ -22,8 +22,7 @@ function Windcape:Tooltip_OnEnable()
 
         tooltip:AddLine("Item Level "..itemLevel) 
         tooltip:Show()
-      end
-    )
+    end)
 end
 
 function Windcape:Tooltip_OnDisable()
