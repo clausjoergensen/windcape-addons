@@ -22,6 +22,7 @@ function Windcape:OnEnable()
     self:Tooltip_OnEnable()
     self:Quests_OnEnable()
     self:AutoInvite_OnEnable()
+    self:Mail_OnEnable()
 end
 
 function Windcape:OnDisable()
@@ -32,6 +33,7 @@ function Windcape:OnDisable()
     self:Tooltip_OnDisable()
     self:Quests_OnDisable()
     self:AutoInvite_OnDisable()
+    self:Mail_OnDisable()
 end
 
 Windcape_Frame = CreateFrame("Frame", "Windcape_Player", UIParent)
