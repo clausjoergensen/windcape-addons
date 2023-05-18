@@ -37,20 +37,14 @@ function Durability:GetDurability()
         "HEADSLOT",
         "NECKSLOT",
         "SHOULDERSLOT",
-        "SHIRTSLOT",
         "CHESTSLOT",
         "WAISTSLOT",
         "LEGSSLOT",
         "FEETSLOT",
         "WRISTSLOT",
         "HANDSSLOT",
-        "FINGER0SLOT",
-        "FINGER1SLOT",
-        "TRINKET0SLOT",
-        "TRINKET1SLOT",
-        "BACKSLOT",
         "MAINHANDSLOT",
-        "SECONDARYHANDSLOT",
+        "SECONDARYHANDSLOT", -- offhands doesn't have durability, but shields do
         "RANGEDSLOT"
     }
     
