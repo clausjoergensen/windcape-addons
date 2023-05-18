@@ -1,8 +1,8 @@
 ## Interface: 30400
-## Version: 1.0.1
+## Version: 1.0.2
 ## Title: Windcape
-## Notes: Chat, Auto-Repair, World Map and Buff styling 
-## Author: Claus Jørgensen
+## Notes: Chat, Auto-Repair, World Map, Buff styling and more.
+## Author: Claus Jørgensen <claus.joergensen@outlook.com>
 ## Notes: Windcape's AddOns
 ## Dependencies: Blizzard_WorldMap
 ## SavedVariables: WindcapeDB
@@ -22,3 +22,4 @@ Modules\AutoInvite.lua
 Modules\Masque.lua
 Modules\Mail.lua
 Modules\Durability.lua
+Modules\Camera.lua

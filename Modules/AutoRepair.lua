@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Claus Jørgensen
+-- Copyright (c) 2023 Claus Jørgensen
 
 Windcape_AutoRepair = Windcape:NewModule("AutoRepair", "AceEvent-3.0")
 

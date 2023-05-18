@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Claus Jørgensen
+-- Copyright (c) 2023 Claus Jørgensen
 
 Windcape_WorldMap = Windcape:NewModule("WorldMap", "AceEvent-3.0", "AceHook-3.0")
 

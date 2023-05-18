@@ -15,13 +15,3 @@ function Windcape:OnInitialize()
         char = { }
     }, true)
 end
-
-Windcape_Frame = CreateFrame("Frame", "Windcape_Player", UIParent)
-Windcape_Frame:SetScript("OnEvent", function(self, event, ...)
-    if event ~= "PLAYER_ENTERING_WORLD" then
-        return
-    end
-    SetCVar("cameraDistanceMaxZoomFactor", 4)
-    SetCVar("nameplateMaxDistance ", 41)
-end)
-Windcape_Frame:RegisterEvent("PLAYER_ENTERING_WORLD")
