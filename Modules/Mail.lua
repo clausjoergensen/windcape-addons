@@ -2,11 +2,12 @@
 
 Mail = Windcape:NewModule("Mail", "AceEvent-3.0")
 
-local minimapText = MiniMapMailFrame:CreateFontString(nil, "ARTWORK")
+local MinimapMailText = MiniMapMailFrame:CreateFontString(nil, "ARTWORK")
 
 function Mail:OnEnable()
-    minimapText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
-    minimapText:SetPoint("CENTER", 0, 0)
+    MinimapMailText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    MinimapMailText:SetPoint("CENTER", 0, 0)
+    MinimapMailText:SetText("M")
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
 end
@@ -21,6 +22,4 @@ function Mail:PLAYER_ENTERING_WORLD()
     
     MiniMapMailBorder:Hide()
     MiniMapMailIcon:Hide()
-
-    minimapText:SetText("M")
 end

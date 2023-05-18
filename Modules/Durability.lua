@@ -2,11 +2,11 @@
 
 Durability = Windcape:NewModule("Durability", "AceEvent-3.0")
 
-local durabilityText = Minimap:CreateFontString(nil, "ARTWORK")
+local DurabilityText = Minimap:CreateFontString(nil, "ARTWORK")
 
 function Durability:OnEnable()
-    durabilityText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
-    durabilityText:SetPoint("TOPLEFT", 4, -4) -- Designed to work with BasicMinimap (Square)
+    DurabilityText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    DurabilityText:SetPoint("TOPLEFT", 4, -4) -- Designed to work with BasicMinimap (Square)
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
@@ -28,7 +28,8 @@ end
 function Durability:UpdateDurability()
     local totalCurrentDurability, totalMaximumDurability = self:GetDurability()
     local durabilityPercentage = 100 / totalMaximumDurability * totalCurrentDurability
-    durabilityText:SetText(math.floor(durabilityPercentage) .. "%")
+    
+    DurabilityText:SetText(math.floor(durabilityPercentage) .. "%")
 end
 
 function Durability:GetDurability()

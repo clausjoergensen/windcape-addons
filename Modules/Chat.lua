@@ -4,7 +4,7 @@ Chat = Windcape:NewModule("Chat", "AceEvent-3.0", "AceHook-3.0")
 
 local COMBAT_LOG_FRAME_INDEX = 2
 local CHAT_HISTORY_MAX_LENGTH = 10
-local showingTooltip = false
+local ShowingTooltip = false
 
 function Chat:OnEnable()
     self:UpdateLayout()
@@ -65,7 +65,7 @@ function Chat:EnableHoverTips()
             }
 
             if linkTypes[linkType] then
-                showingTooltip = true
+                ShowingTooltip = true
 
                 ShowUIPanel(GameTooltip)
 
@@ -76,8 +76,8 @@ function Chat:EnableHoverTips()
         end)
 
         self:HookScript(chatFrame, "OnHyperlinkLeave", function(frame, link)
-            if showingTooltip then
-                showingTooltip = false
+            if ShowingTooltip then
+                ShowingTooltip = false
                 GameTooltip:Hide()
             end
         end)
