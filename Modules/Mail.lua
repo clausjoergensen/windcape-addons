@@ -1,14 +1,16 @@
 -- Copyright (c) 2023 Claus Jørgensen
 
-function Windcape:Mail_OnEnable()
-    self:RegisterEvent("PLAYER_ENTERING_WORLD", "Mail_PlayerEnteringWorld")
+Mail = Windcape:NewModule("Mail", "AceEvent-3.0")
+
+function Mail:OnEnable()
+    self:RegisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Windcape:Mail_OnDisable()
+function Mail:OnDisable()
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Windcape:Mail_PlayerEnteringWorld()
+function Mail:PLAYER_ENTERING_WORLD()
     MiniMapMailFrame:ClearAllPoints()
     MiniMapMailFrame:SetPoint("BOTTOMRIGHT", "Minimap", "BOTTOMRIGHT", 6, -8) -- Designed to work with BasicMinimap (Square)
     

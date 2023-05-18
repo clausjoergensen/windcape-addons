@@ -21,3 +21,4 @@ Modules\Quests.lua
 Modules\AutoInvite.lua
 Modules\Masque.lua
 Modules\Mail.lua
+Modules\Durability.lua

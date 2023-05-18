@@ -1,9 +1,11 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
+WorldMap = Windcape:NewModule("WorldMap", "AceEvent-3.0", "AceHook-3.0")
+
 local LibWindow = LibStub("LibWindow-1.1")
 
-function Windcape:WorldMap_OnEnable()
-    LibWindow.RegisterConfig(WorldMapFrame, self.db.char)
+function WorldMap:OnEnable()
+    LibWindow.RegisterConfig(WorldMapFrame, Windcape.db.char)
 
     self:SecureHookScript(WorldMapFrame,
         "OnDragStart",
@@ -52,29 +54,29 @@ function Windcape:WorldMap_OnEnable()
     self:WorldMapFrame_EnableCoordinates()
 end
 
-function Windcape:WorldMap_OnDisable()
+function WorldMap:OnDisable()
     self:WorldMapFrame_DisableCoordinates()
 end
 
-function Windcape:WorldMapFrame_SetScale()
+function WorldMap:WorldMapFrame_SetScale()
     WorldMapFrame:SetScale(1.0)
 end
 
-function Windcape:WorldMapFrame_SavePosition()
+function WorldMap:WorldMapFrame_SavePosition()
     LibWindow.SavePosition(WorldMapFrame)
 end
 
-function Windcape:WorldMapFrame_RestorePosition()
+function WorldMap:WorldMapFrame_RestorePosition()
     LibWindow.RestorePosition(WorldMapFrame)
 end
 
-function Windcape:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
+function WorldMap:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
     local x, y = MapCanvasScrollControllerMixin:GetCursorPosition(frame)
     local scale = frame:GetScale() * UIParent:GetEffectiveScale()
     return x / scale, y / scale
 end
 
-function Windcape:WorldMapFrame_HandleUserActionToggleSelf(frame)
+function WorldMap:WorldMapFrame_HandleUserActionToggleSelf(frame)
     if frame:IsShown() then
         frame:Hide()
     else
@@ -82,21 +84,21 @@ function Windcape:WorldMapFrame_HandleUserActionToggleSelf(frame)
     end
 end
 
-function Windcape:WorldMapFrame_SynchronizeDisplayState(frame)
+function WorldMap:WorldMapFrame_SynchronizeDisplayState(frame)
     self:WorldMapFrame_SetScale()
     self:WorldMapFrame_RestorePosition()
 end
 
-function Windcape:WorldMapFrame_OnDragStart(frame)
+function WorldMap:WorldMapFrame_OnDragStart(frame)
     frame:StartMoving()
 end
 
-function Windcape:WorldMapFrame_OnDragStop(frame)
+function WorldMap:WorldMapFrame_OnDragStop(frame)
     frame:StopMovingOrSizing()
     self:WorldMapFrame_SavePosition()
 end
 
-function Windcape:WorldMapFrame_EnableCoordinates()
+function WorldMap:WorldMapFrame_EnableCoordinates()
     self.coordinatesFrame = CreateFrame("Frame",
         "Windcape_CoordsFrame",
         WorldMapFrame.ScrollContainer)
@@ -118,7 +120,7 @@ function Windcape:WorldMapFrame_EnableCoordinates()
     self.coordinatesFrame:Show()
 end
 
-function Windcape:WorldMapFrame_DisableCoordinates()
+function WorldMap:WorldMapFrame_DisableCoordinates()
     if not self.coordinatesFrame then
         return
     end
@@ -126,12 +128,12 @@ function Windcape:WorldMapFrame_DisableCoordinates()
     self:Unhook(self.coordinatesFrame, "OnUpdate")
 end
 
-function Windcape:CoordinatesFrame_OnUpdate()
+function WorldMap:CoordinatesFrame_OnUpdate()
     self:CoordinatesFrame_UpdateCusorCoordinates()
     self:CoordinatesFrame_UpdatePlayerCoordinates()
 end
 
-function Windcape:CoordinatesFrame_UpdateCusorCoordinates()
+function WorldMap:CoordinatesFrame_UpdateCusorCoordinates()
     local mouseX, mouseY = self:WorldMapFrame_GetMouseCoordinates()
     if mouseX < 0 or mouseX > 1 or mouseY < 0 or mouseY > 1 then
         return
@@ -144,7 +146,7 @@ function Windcape:CoordinatesFrame_UpdateCusorCoordinates()
     end
 end
 
-function Windcape:CoordinatesFrame_UpdatePlayerCoordinates()
+function WorldMap:CoordinatesFrame_UpdatePlayerCoordinates()
     local playerMapPosition = C_Map.GetPlayerMapPosition(WorldMapFrame:GetMapID(), "player")
     if not playerMapPosition then
         return
@@ -158,7 +160,7 @@ function Windcape:CoordinatesFrame_UpdatePlayerCoordinates()
     end
 end
 
-function Windcape:WorldMapFrame_GetMouseCoordinates()
+function WorldMap:WorldMapFrame_GetMouseCoordinates()
     local scrollContainerChild = WorldMapFrame.ScrollContainer.Child
     local left = scrollContainerChild:GetLeft()
     local top = scrollContainerChild:GetTop()

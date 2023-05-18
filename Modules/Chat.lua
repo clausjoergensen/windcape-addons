@@ -1,16 +1,18 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
+Chat = Windcape:NewModule("Chat", "AceEvent-3.0", "AceHook-3.0")
+
 local COMBAT_LOG_FRAME_INDEX = 2
 local CHAT_HISTORY_MAX_LENGTH = 10
 local showingTooltip = false
 
-function Windcape:Chat_OnEnable()
-    self:Chat_UpdateLayout()
-    self:Chat_EnableClassColors()
-    self:Chat_EnableHoverTips()
+function Chat:OnEnable()
+    self:UpdateLayout()
+    self:EnableClassColors()
+    self:EnableHoverTips()
 end
 
-function Windcape:Chat_OnDisable()
+function Chat:OnDisable()
     for i = 1, NUM_CHAT_WINDOWS do
         local chatFrame = _G["ChatFrame" .. i]
         self:Unhook(chatFrame, "OnHyperlinkEnter")
@@ -19,11 +21,11 @@ function Windcape:Chat_OnDisable()
     end
 end
 
-function Windcape:Chat_EnableClassColors()
+function Chat:EnableClassColors()
     SetCVar("chatClassColorOverride", "0")
 end
 
-function Windcape:Chat_UpdateLayout()
+function Chat:UpdateLayout()
     local FONT_SIZE = 12
 
     for i = 1, NUM_CHAT_WINDOWS do
@@ -47,7 +49,7 @@ function Windcape:Chat_UpdateLayout()
     end
 end
 
-function Windcape:Chat_EnableHoverTips()
+function Chat:EnableHoverTips()
     for i = 1, NUM_CHAT_WINDOWS do
         local chatFrame = _G["ChatFrame" .. i]
 

@@ -1,9 +1,11 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
+Buffs = Windcape:NewModule("Buffs", "AceEvent-3.0", "AceHook-3.0")
+
 local Masque = LibStub("Masque", true)
 
-function Windcape:Buffs_OnEnable()
-    self:SecureHook("UIParent_UpdateTopFramePositions", "Buffs_Move")
+function Buffs:OnEnable()
+    self:SecureHook("UIParent_UpdateTopFramePositions", "UpdateTopFramePositions")
 
     if Masque then
         self.buffs = Masque:Group("Windcape", "Buffs")
@@ -11,21 +13,21 @@ function Windcape:Buffs_OnEnable()
         self.tmpEnchants = Masque:Group("Windcape", "Temp Enchants")
     end
 
-    self:RegisterEvent("PLAYER_ENTERING_WORLD", "Buffs_PlayerEnteringWorld")
-    self:SecureHook("CreateFrame", "Buffs_CreateFrame")
+    self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self:SecureHook("CreateFrame", "OnCreateFrame")
 end
 
-function Windcape:Buffs_OnDisable()
+function Buffs:OnDisable()
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Windcape:Buffs_Move()
+function Buffs:UpdateTopFramePositions()
     BuffFrame:ClearAllPoints()
     BuffFrame:SetScale(1.0)
     BuffFrame:SetPoint("TOPRIGHT", "Minimap", "TOPLEFT", -10, 0)
 end
 
-function Windcape:Buffs_PlayerEnteringWorld()
+function Buffs:PLAYER_ENTERING_WORLD()
     for i = 1, BUFF_MAX_DISPLAY do
         local buffFrame = _G["BuffButton" .. i]
         if not buffFrame then
@@ -49,7 +51,7 @@ function Windcape:Buffs_PlayerEnteringWorld()
     end
 end
 
-function Windcape:Buffs_CreateFrame(_, name, parent)
+function Buffs:OnCreateFrame(_, name, parent)
     if parent ~= BuffFrame or type(name) ~= "string" then
         return
     end

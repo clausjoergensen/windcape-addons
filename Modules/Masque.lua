@@ -1,3 +1,5 @@
+-- Copyright (c) 2021 Claus Jørgensen
+
 local MSQ = LibStub("Masque", true)
 
 if not MSQ then return end

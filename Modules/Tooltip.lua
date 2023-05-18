@@ -1,6 +1,8 @@
 -- Copyright (c) 2023 Claus Jørgensen
 
-function Windcape:Tooltip_OnEnable()
+Tooltip = Windcape:NewModule("Tooltip", "AceEvent-3.0", "AceHook-3.0")
+
+function Tooltip:OnEnable()
     GameTooltip:HookScript("OnTooltipSetUnit", function(tooltip)
         GameTooltipStatusBar:Hide() -- Hide health bar
         
@@ -25,6 +27,6 @@ function Windcape:Tooltip_OnEnable()
     end)
 end
 
-function Windcape:Tooltip_OnDisable()
+function Tooltip:OnDisable()
     GameTooltip:Unhook("OnTooltipSetItem")
 end
