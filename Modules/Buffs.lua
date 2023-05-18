@@ -1,10 +1,10 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
-Buffs = Windcape:NewModule("Buffs", "AceEvent-3.0", "AceHook-3.0")
+Windcape_Buffs = Windcape:NewModule("Buffs", "AceEvent-3.0", "AceHook-3.0")
 
 local Masque = LibStub("Masque", true)
 
-function Buffs:OnEnable()
+function Windcape_Buffs:OnEnable()
     self:SecureHook("UIParent_UpdateTopFramePositions", "UpdateTopFramePositions")
 
     if Masque then
@@ -17,17 +17,17 @@ function Buffs:OnEnable()
     self:SecureHook("CreateFrame", "OnCreateFrame")
 end
 
-function Buffs:OnDisable()
+function Windcape_Buffs:OnDisable()
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Buffs:UpdateTopFramePositions()
+function Windcape_Buffs:UpdateTopFramePositions()
     BuffFrame:ClearAllPoints()
     BuffFrame:SetScale(1.0)
     BuffFrame:SetPoint("TOPRIGHT", "Minimap", "TOPLEFT", -10, 0)
 end
 
-function Buffs:PLAYER_ENTERING_WORLD()
+function Windcape_Buffs:PLAYER_ENTERING_WORLD()
     for i = 1, BUFF_MAX_DISPLAY do
         local buffFrame = _G["BuffButton" .. i]
         if not buffFrame then
@@ -51,7 +51,7 @@ function Buffs:PLAYER_ENTERING_WORLD()
     end
 end
 
-function Buffs:OnCreateFrame(_, name, parent)
+function Windcape_Buffs:OnCreateFrame(_, name, parent)
     if parent ~= BuffFrame or type(name) ~= "string" then
         return
     end

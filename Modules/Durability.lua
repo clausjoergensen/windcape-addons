@@ -1,10 +1,10 @@
 -- Copyright (c) 2023 Claus Jørgensen
 
-Durability = Windcape:NewModule("Durability", "AceEvent-3.0")
+Windcape_Durability = Windcape:NewModule("Durability", "AceEvent-3.0")
 
 local DurabilityText = Minimap:CreateFontString(nil, "ARTWORK")
 
-function Durability:OnEnable()
+function Windcape_Durability:OnEnable()
     DurabilityText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
     DurabilityText:SetPoint("TOPLEFT", 3, -4) -- Designed to work with BasicMinimap (Square)
 
@@ -12,27 +12,27 @@ function Durability:OnEnable()
 	self:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
 end
 
-function Durability:OnDisable()
+function Windcape_Durability:OnDisable()
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 	self:UnregisterEvent("UPDATE_INVENTORY_DURABILITY")
 end
 
-function Durability:PLAYER_ENTERING_WORLD()
+function Windcape_Durability:PLAYER_ENTERING_WORLD()
     self:UpdateDurability()
 end
 
-function Durability:UPDATE_INVENTORY_DURABILITY()
+function Windcape_Durability:UPDATE_INVENTORY_DURABILITY()
     self:UpdateDurability()
 end
 
-function Durability:UpdateDurability()
+function Windcape_Durability:UpdateDurability()
     local totalCurrentDurability, totalMaximumDurability = self:GetDurability()
     local durabilityPercentage = 100 / totalMaximumDurability * totalCurrentDurability
     
     DurabilityText:SetText(math.floor(durabilityPercentage) .. "%")
 end
 
-function Durability:GetDurability()
+function Windcape_Durability:GetDurability()
     local itemSlots = {
         "HEADSLOT",
         "NECKSLOT",

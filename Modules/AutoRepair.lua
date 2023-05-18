@@ -1,16 +1,16 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
-AutoRepair = Windcape:NewModule("AutoRepair", "AceEvent-3.0")
+Windcape_AutoRepair = Windcape:NewModule("AutoRepair", "AceEvent-3.0")
 
-function AutoRepair:OnEnable()
+function Windcape_AutoRepair:OnEnable()
     self:RegisterEvent("MERCHANT_SHOW")
 end
 
-function AutoRepair:OnDisable()
+function Windcape_AutoRepair:OnDisable()
     self:UnregisterEvent("MERCHANT_SHOW")
 end
 
-function AutoRepair:MERCHANT_SHOW()
+function Windcape_AutoRepair:MERCHANT_SHOW()
     if not CanMerchantRepair() then
         return
     end

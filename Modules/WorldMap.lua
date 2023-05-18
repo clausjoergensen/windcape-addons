@@ -1,10 +1,10 @@
 -- Copyright (c) 2021 Claus Jørgensen
 
-WorldMap = Windcape:NewModule("WorldMap", "AceEvent-3.0", "AceHook-3.0")
+Windcape_WorldMap = Windcape:NewModule("WorldMap", "AceEvent-3.0", "AceHook-3.0")
 
 local LibWindow = LibStub("LibWindow-1.1")
 
-function WorldMap:OnEnable()
+function Windcape_WorldMap:OnEnable()
     LibWindow.RegisterConfig(WorldMapFrame, Windcape.db.char)
 
     self:SecureHookScript(WorldMapFrame,
@@ -54,29 +54,29 @@ function WorldMap:OnEnable()
     self:WorldMapFrame_EnableCoordinates()
 end
 
-function WorldMap:OnDisable()
+function Windcape_WorldMap:OnDisable()
     self:WorldMapFrame_DisableCoordinates()
 end
 
-function WorldMap:WorldMapFrame_SetScale()
+function Windcape_WorldMap:WorldMapFrame_SetScale()
     WorldMapFrame:SetScale(1.0)
 end
 
-function WorldMap:WorldMapFrame_SavePosition()
+function Windcape_WorldMap:WorldMapFrame_SavePosition()
     LibWindow.SavePosition(WorldMapFrame)
 end
 
-function WorldMap:WorldMapFrame_RestorePosition()
+function Windcape_WorldMap:WorldMapFrame_RestorePosition()
     LibWindow.RestorePosition(WorldMapFrame)
 end
 
-function WorldMap:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
+function Windcape_WorldMap:WorldMapFrame_ScrollContainer_GetCursorPosition(frame)
     local x, y = MapCanvasScrollControllerMixin:GetCursorPosition(frame)
     local scale = frame:GetScale() * UIParent:GetEffectiveScale()
     return x / scale, y / scale
 end
 
-function WorldMap:WorldMapFrame_HandleUserActionToggleSelf(frame)
+function Windcape_WorldMap:WorldMapFrame_HandleUserActionToggleSelf(frame)
     if frame:IsShown() then
         frame:Hide()
     else
@@ -84,21 +84,21 @@ function WorldMap:WorldMapFrame_HandleUserActionToggleSelf(frame)
     end
 end
 
-function WorldMap:WorldMapFrame_SynchronizeDisplayState(frame)
+function Windcape_WorldMap:WorldMapFrame_SynchronizeDisplayState(frame)
     self:WorldMapFrame_SetScale()
     self:WorldMapFrame_RestorePosition()
 end
 
-function WorldMap:WorldMapFrame_OnDragStart(frame)
+function Windcape_WorldMap:WorldMapFrame_OnDragStart(frame)
     frame:StartMoving()
 end
 
-function WorldMap:WorldMapFrame_OnDragStop(frame)
+function Windcape_WorldMap:WorldMapFrame_OnDragStop(frame)
     frame:StopMovingOrSizing()
     self:WorldMapFrame_SavePosition()
 end
 
-function WorldMap:WorldMapFrame_EnableCoordinates()
+function Windcape_WorldMap:WorldMapFrame_EnableCoordinates()
     self.coordinatesFrame = CreateFrame("Frame",
         "Windcape_CoordsFrame",
         WorldMapFrame.ScrollContainer)
@@ -120,7 +120,7 @@ function WorldMap:WorldMapFrame_EnableCoordinates()
     self.coordinatesFrame:Show()
 end
 
-function WorldMap:WorldMapFrame_DisableCoordinates()
+function Windcape_WorldMap:WorldMapFrame_DisableCoordinates()
     if not self.coordinatesFrame then
         return
     end
@@ -128,12 +128,12 @@ function WorldMap:WorldMapFrame_DisableCoordinates()
     self:Unhook(self.coordinatesFrame, "OnUpdate")
 end
 
-function WorldMap:CoordinatesFrame_OnUpdate()
+function Windcape_WorldMap:CoordinatesFrame_OnUpdate()
     self:CoordinatesFrame_UpdateCusorCoordinates()
     self:CoordinatesFrame_UpdatePlayerCoordinates()
 end
 
-function WorldMap:CoordinatesFrame_UpdateCusorCoordinates()
+function Windcape_WorldMap:CoordinatesFrame_UpdateCusorCoordinates()
     local mouseX, mouseY = self:WorldMapFrame_GetMouseCoordinates()
     if mouseX < 0 or mouseX > 1 or mouseY < 0 or mouseY > 1 then
         return
@@ -146,7 +146,7 @@ function WorldMap:CoordinatesFrame_UpdateCusorCoordinates()
     end
 end
 
-function WorldMap:CoordinatesFrame_UpdatePlayerCoordinates()
+function Windcape_WorldMap:CoordinatesFrame_UpdatePlayerCoordinates()
     local playerMapPosition = C_Map.GetPlayerMapPosition(WorldMapFrame:GetMapID(), "player")
     if not playerMapPosition then
         return
@@ -160,7 +160,7 @@ function WorldMap:CoordinatesFrame_UpdatePlayerCoordinates()
     end
 end
 
-function WorldMap:WorldMapFrame_GetMouseCoordinates()
+function Windcape_WorldMap:WorldMapFrame_GetMouseCoordinates()
     local scrollContainerChild = WorldMapFrame.ScrollContainer.Child
     local left = scrollContainerChild:GetLeft()
     local top = scrollContainerChild:GetTop()

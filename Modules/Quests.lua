@@ -1,16 +1,16 @@
 -- Copyright (c) 2023 Claus Jørgensen
 
-Quests = Windcape:NewModule("Quests", "AceEvent-3.0", "AceHook-3.0")
+Windcape_Quests = Windcape:NewModule("Quests", "AceEvent-3.0", "AceHook-3.0")
 
-function Quests:OnEnable()
+function Windcape_Quests:OnEnable()
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Quests:OnDisable()
+function Windcape_Quests:OnDisable()
     self:unregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Quests:PLAYER_ENTERING_WORLD() 
+function Windcape_Quests:PLAYER_ENTERING_WORLD() 
     hooksecurefunc(WatchFrame, "SetPoint", function(self)
         if not setting then
             setting = true
