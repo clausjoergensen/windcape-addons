@@ -7,17 +7,23 @@ local Masque = LibStub("Masque", true)
 function Windcape_Buffs:OnEnable()
     self:SecureHook("UIParent_UpdateTopFramePositions", "UpdateTopFramePositions")
 
-    if Masque then
-        self.buffs = Masque:Group("Windcape", "Buffs")
-        self.debuffs = Masque:Group("Windcape", "Debuffs")
-        self.tmpEnchants = Masque:Group("Windcape", "Temp Enchants")
+    if not Masque then
+        return
     end
+
+    self.buffs = Masque:Group("Windcape", "Buffs")
+    self.debuffs = Masque:Group("Windcape", "Debuffs")
+    self.tmpEnchants = Masque:Group("Windcape", "Temp Enchants")
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:SecureHook("CreateFrame", "OnCreateFrame")
 end
 
 function Windcape_Buffs:OnDisable()
+    if not Masque then
+        return
+    end
+    
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 

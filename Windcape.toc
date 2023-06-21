@@ -1,4 +1,4 @@
-## Interface: 30400
+## Interface: 30402
 ## Version: 1.0.2
 ## Title: Windcape
 ## Notes: Chat, Auto-Repair, World Map, Buff styling and more.
