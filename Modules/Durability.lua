@@ -6,7 +6,7 @@ local DurabilityText = Minimap:CreateFontString(nil, "ARTWORK")
 
 function Windcape_Durability:OnEnable()
     DurabilityText:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
-    DurabilityText:SetPoint("TOPLEFT", 3, -4) -- Designed to work with BasicMinimap (Square)
+    DurabilityText:SetPoint("TOPRIGHT", -3, -4) -- Designed to work with BasicMinimap (Square)
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("UPDATE_INVENTORY_DURABILITY")
