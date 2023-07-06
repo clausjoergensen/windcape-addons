@@ -69,7 +69,6 @@ function Windcape_Chat:EnableHoverTips()
             end
 
             ShowingTooltip = true
-
             ShowUIPanel(GameTooltip)
 
             GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
