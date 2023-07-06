@@ -16,8 +16,7 @@ function Windcape_Tooltip:OnEnable()
             return
         end
 
-        local _, _, _, itemLevel = GetItemInfo(item)
-        
+        local _, _, _, itemLevel = GetItemInfo(item)        
         if not itemLevel then
             return
         end 
