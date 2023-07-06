@@ -64,22 +64,25 @@ function Windcape_Chat:EnableHoverTips()
                 currency = true
             }
 
-            if linkTypes[linkType] then
-                ShowingTooltip = true
-
-                ShowUIPanel(GameTooltip)
-
-                GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
-                GameTooltip:SetHyperlink(link)
-                GameTooltip:Show()
+            if not linkTypes[linkType] then
+                return
             end
+
+            ShowingTooltip = true
+
+            ShowUIPanel(GameTooltip)
+
+            GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
+            GameTooltip:SetHyperlink(link)
+            GameTooltip:Show()
         end)
 
         self:HookScript(chatFrame, "OnHyperlinkLeave", function(frame, link)
-            if ShowingTooltip then
-                ShowingTooltip = false
-                GameTooltip:Hide()
+            if not ShowingTooltip then
+                return
             end
+            ShowingTooltip = false
+            GameTooltip:Hide()
         end)
     end
 end
