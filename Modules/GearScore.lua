@@ -134,7 +134,7 @@ function Windcape_GearScore:GetScore(unitId)
     end
     
     if offHandItem then
-        local _, _, _, itemLevel, _, _, _, _, itemEquipLoc, _ = GetItemInfo(offHandItem)
+        local _, _, _, _, _, _, _, _, itemEquipLoc, _ = GetItemInfo(offHandItem)
         if itemEquipLoc == "INVTYPE_2HWEAPON" then
             titanGrip = 0.5
         end
