@@ -3,10 +3,11 @@
 Windcape_AutoInvite = Windcape:NewModule("AutoInvite", "AceEvent-3.0")
 
 local function ON_CHAT_MSG_WHISPER(self, event, message, sender)
-    if (strtrim(message):lower() == "inv") or (strtrim(message):lower() == "invite") then
-        InviteUnit(sender)
+    if not ((strtrim(message):lower() == "inv") or (strtrim(message):lower() == "invite")) then
+        return
     end
-    return false
+
+    InviteUnit(sender)
 end
 
 function Windcape_AutoInvite:OnEnable()
