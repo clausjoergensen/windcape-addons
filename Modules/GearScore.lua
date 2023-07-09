@@ -63,7 +63,7 @@ function Windcape_GearScore:GetItemScore(itemLink)
     
     local _, itemLink, itemRarity, itemLevel, _, _, _, _, itemEquipLoc, _ = GetItemInfo(itemLink)    
     if not (itemLink and itemRarity and itemLevel and itemEquipLoc and itemTypes[itemEquipLoc]) then
-        return 0.0
+        return 0, 0
     end
     
     local qualityScale = 1
@@ -99,7 +99,7 @@ function Windcape_GearScore:GetItemScore(itemLink)
     end
     
     if not (itemRarity >= 2 and itemRarity <= 4) then
-        return 0.0
+        return 0, 0
     end
         
     local scale = 1.8618
