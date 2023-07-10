@@ -24,3 +24,4 @@ Modules\Mail.lua
 Modules\Durability.lua
 Modules\Camera.lua
 Modules\GearScore.lua
+Modules\MiniMap.lua
