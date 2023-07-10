@@ -15,5 +15,5 @@ function Windcape_MiniMap:PLAYER_ENTERING_WORLD()
     MiniMapLFGFrame:SetPoint("BOTTOMRIGHT", "Minimap", "BOTTOMRIGHT", 6, -36)
 
     MiniMapBattlefieldFrame:ClearAllPoints()
-    MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", "MiniMapLFGFrame", "BOTTOMRIGHT", -34, -2)
+    MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", "MiniMapLFGFrame", "BOTTOMRIGHT", -34, -1)
 end
