@@ -17,11 +17,10 @@ function Windcape_Tooltip:OnEnable()
         end
 
         local _, _, _, itemLevel = GetItemInfo(item)        
-        if not itemLevel then
-            return
+        if itemLevel then
+            tooltip:AddLine("Item Level "..itemLevel) 
         end 
 
-        tooltip:AddLine("Item Level "..itemLevel) 
         tooltip:Show()
     end)
 end
