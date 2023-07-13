@@ -23,7 +23,7 @@ function Windcape_Buffs:OnDisable()
     if not Masque then
         return
     end
-    
+
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 

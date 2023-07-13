@@ -78,7 +78,7 @@ function Windcape_Chat:OnHyperlinkEnter(frame, link)
 
     GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
     GameTooltip:SetHyperlink(link)
-    GameTooltip:Show() 
+    GameTooltip:Show()
 end
 
 function Windcape_Chat:OnHyperlinkLeave(frame, link)

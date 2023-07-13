@@ -14,7 +14,7 @@ end
 
 function Windcape_Tooltip:OnTooltipSetUnit(tooltip)
     GameTooltipStatusBar:Hide() -- Hide health bar
-        
+
     tooltip:ClearAllPoints()
     tooltip:SetPoint("BOTTOMRIGHT", WorldFrame, "BOTTOMRIGHT", -10, 10)
 end
@@ -25,9 +25,9 @@ function Windcape_Tooltip:OnTooltipSetItem(tooltip)
         return
     end
 
-    local _, _, _, itemLevel = GetItemInfo(item)        
+    local _, _, _, itemLevel = GetItemInfo(item)
     if itemLevel then
-        tooltip:AddLine("Item Level " .. itemLevel) 
+        tooltip:AddLine("Item Level " .. itemLevel)
     end
 
     tooltip:Show()

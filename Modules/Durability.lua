@@ -28,7 +28,7 @@ end
 function Windcape_Durability:UpdateDurability()
     local totalCurrentDurability, totalMaximumDurability = self:GetDurability()
     local durabilityPercentage = 100 / totalMaximumDurability * totalCurrentDurability
-    
+
     DurabilityText:SetText(math.floor(durabilityPercentage) .. "%")
 end
 
@@ -47,10 +47,10 @@ function Windcape_Durability:GetDurability()
         "SECONDARYHANDSLOT", -- offhands doesn't have durability, but shields do
         "RANGEDSLOT"
     }
-    
+
     local totalCurrentDurability = 0
     local totalMaximumDurability = 0
-    
+
     for _, invSlotName in ipairs(itemSlots) do
         local invSlotId = GetInventorySlotInfo(invSlotName)
         local currentDurability, maximumDurability = GetInventoryItemDurability(invSlotId)

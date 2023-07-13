@@ -19,7 +19,7 @@ end
 function Windcape_Mail:PLAYER_ENTERING_WORLD()
     MiniMapMailFrame:ClearAllPoints()
     MiniMapMailFrame:SetPoint("BOTTOMRIGHT", "Minimap", "BOTTOMRIGHT", 6, -8) -- Designed to work with BasicMinimap (Square)
-    
+
     MiniMapMailBorder:Hide()
     MiniMapMailIcon:Hide()
 end

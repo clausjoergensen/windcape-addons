@@ -24,7 +24,7 @@ function Windcape_GearScore:PLAYER_EQUIPMENT_CHANGED()
     self:UpdateGearScore()
 end
 
-function Windcape_GearScore:UpdateGearScore() 
+function Windcape_GearScore:UpdateGearScore()
     local gearScore, itemLevel = self:GetScore("player")
     GearScoreText:SetText(format("%u / %u", gearScore, itemLevel))
 end
@@ -56,19 +56,19 @@ function Windcape_GearScore:GetItemScore(itemLink)
         ["INVTYPE_CLOAK"] = { ["SlotMOD"] = 0.5625, ["ItemSlot"] = 15, ["Enchantable"] = true },
         ["INVTYPE_BODY"] = { ["SlotMOD"] = 0, ["ItemSlot"] = 4, ["Enchantable"] = false },
     }
-    
+
     if not itemLink then
         return 0, 0
     end
-    
-    local _, itemLink, itemRarity, itemLevel, _, _, _, _, itemEquipLoc, _ = GetItemInfo(itemLink)    
+
+    local _, itemLink, itemRarity, itemLevel, _, _, _, _, itemEquipLoc, _ = GetItemInfo(itemLink)
     if not (itemLink and itemRarity and itemLevel and itemEquipLoc and itemTypes[itemEquipLoc]) then
         return 0, 0
     end
-    
+
     local qualityScale = 1
-    
-    if itemRarity == 5 then 
+
+    if itemRarity == 5 then
         qualityScale = 1.3
         itemRarity = 4
     elseif itemRarity == 1 then
@@ -97,11 +97,11 @@ function Windcape_GearScore:GetItemScore(itemLink)
             [1] = { ["A"] = 0.0000, ["B"] = 2.2500 }
         }
     end
-    
+
     if not (itemRarity >= 2 and itemRarity <= 4) then
         return 0, 0
     end
-        
+
     local scale = 1.8618
     local gearScore = floor(((itemLevel - table[itemRarity].A) / table[itemRarity].B) * itemTypes[itemEquipLoc].SlotMOD * scale * qualityScale)
 
@@ -122,39 +122,39 @@ function Windcape_GearScore:GetScore(unitId)
     local itemCount = 0
     local levelTotal = 0
     local titanGrip = 1
-    
+
     local mainHandItem = GetInventoryItemLink(unitId, 16)
     local offHandItem = GetInventoryItemLink(unitId, 17)
-    
+
     if mainHandItem and offHandItem then
         local _, _, _, itemLevel, _, _, _, _, itemEquipLoc, _ = GetItemInfo(mainHandItem)
         if itemEquipLoc == "INVTYPE_2HWEAPON" then
             titanGrip = 0.5
         end
     end
-    
+
     if offHandItem then
         local _, _, _, _, _, _, _, _, itemEquipLoc, _ = GetItemInfo(offHandItem)
         if itemEquipLoc == "INVTYPE_2HWEAPON" then
             titanGrip = 0.5
         end
-        
+
         local tempScore, itemLevel = self:GetItemScore(offHandItem)
         if isHunter then
             tempScore = tempScore * 0.3164
         end
-        
+
         gearScore = gearScore + tempScore * titanGrip
         itemCount = itemCount + 1
         levelTotal = levelTotal + itemLevel
     end
-    
+
     for i = 1, 18 do
         if i ~= 4 and i ~= 17 then
             local item = GetInventoryItemLink(unitId, i)
             if item then
                 local tempScore, itemLevel = self:GetItemScore(item)
-                
+
                 if isHunter then
                     if i == 16 then
                         tempScore = tempScore * 0.3164
@@ -162,21 +162,21 @@ function Windcape_GearScore:GetScore(unitId)
                         tempScore = tempScore * 5.3224
                     end
                 end
-                
+
                 if i == 16 then
                     tempScore = tempScore * titanGrip
                 end
-                
+
                 gearScore = gearScore + tempScore
                 itemCount = itemCount + 1
                 levelTotal = levelTotal + itemLevel
             end
         end
     end
-    
+
     if not (gearScore > 0 and itemCount > 0) then
         return 0, 0
     end
-    
+
     return floor(gearScore), floor(levelTotal / itemCount)
 end

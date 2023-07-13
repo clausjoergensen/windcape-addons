@@ -10,7 +10,7 @@ function Windcape_Quests:OnDisable()
     self:unregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
-function Windcape_Quests:PLAYER_ENTERING_WORLD() 
+function Windcape_Quests:PLAYER_ENTERING_WORLD()
     hooksecurefunc(WatchFrame, "SetPoint", function(self)
         if setting then
             return
