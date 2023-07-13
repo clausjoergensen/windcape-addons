@@ -4,7 +4,6 @@ Windcape_Chat = Windcape:NewModule("Chat", "AceEvent-3.0", "AceHook-3.0")
 
 local COMBAT_LOG_FRAME_INDEX = 2
 local CHAT_HISTORY_MAX_LENGTH = 10
-local ShowingTooltip = false
 
 function Windcape_Chat:OnEnable()
     self:UpdateLayout()
@@ -50,38 +49,42 @@ function Windcape_Chat:UpdateLayout()
 end
 
 function Windcape_Chat:EnableHoverTips()
+    self.showingTooltip = false
+
     for i = 1, NUM_CHAT_WINDOWS do
         local chatFrame = _G["ChatFrame" .. i]
-
-        self:HookScript(chatFrame, "OnHyperlinkEnter", function(frame, link)
-            local linkType = string.match(link, "^(.-):")
-            local linkTypes = {
-                item = true,
-                enchant = true,
-                spell = true,
-                quest = true,
-                achievement = true,
-                currency = true
-            }
-
-            if not linkTypes[linkType] then
-                return
-            end
-
-            ShowingTooltip = true
-            ShowUIPanel(GameTooltip)
-
-            GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
-            GameTooltip:SetHyperlink(link)
-            GameTooltip:Show()
-        end)
-
-        self:HookScript(chatFrame, "OnHyperlinkLeave", function(frame, link)
-            if not ShowingTooltip then
-                return
-            end
-            ShowingTooltip = false
-            GameTooltip:Hide()
-        end)
+        self:HookScript(chatFrame, "OnHyperlinkEnter")
+        self:HookScript(chatFrame, "OnHyperlinkLeave")
     end
+end
+
+function Windcape_Chat:OnHyperlinkEnter(frame, link)
+    local linkType = string.match(link, "^(.-):")
+    local linkTypes = {
+        item = true,
+        enchant = true,
+        spell = true,
+        quest = true,
+        achievement = true,
+        currency = true
+    }
+
+    if not linkTypes[linkType] then
+        return
+    end
+
+    self.showingTooltip = true
+    ShowUIPanel(GameTooltip)
+
+    GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
+    GameTooltip:SetHyperlink(link)
+    GameTooltip:Show() 
+end
+
+function Windcape_Chat:OnHyperlinkLeave(frame, link)
+    if not self.showingTooltip then
+        return
+    end
+    self.showingTooltip = false
+    GameTooltip:Hide()
 end
