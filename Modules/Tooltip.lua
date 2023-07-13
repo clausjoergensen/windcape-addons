@@ -8,7 +8,8 @@ function Windcape_Tooltip:OnEnable()
 end
 
 function Windcape_Tooltip:OnDisable()
-    GameTooltip:Unhook("OnTooltipSetItem")
+    self:Unhook(GameTooltip, "OnTooltipSetUnit")
+    self:Unhook(GameTooltip, "OnTooltipSetItem")
 end
 
 function Windcape_Tooltip:OnTooltipSetUnit(tooltip)
