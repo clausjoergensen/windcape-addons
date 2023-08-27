@@ -20,12 +20,12 @@ function Windcape_Tooltip:OnTooltipSetUnit(tooltip)
 end
 
 function Windcape_Tooltip:OnTooltipSetItem(tooltip)
-    local item = tooltip:GetItem()
+    local _, itemLink = tooltip:GetItem()
     if not item then
         return
     end
 
-    local _, _, _, itemLevel = GetItemInfo(item)
+    local itemLevel = select(4, GetItemInfo(itemLink))
     if itemLevel then
         tooltip:AddLine("Item Level " .. itemLevel)
     end
