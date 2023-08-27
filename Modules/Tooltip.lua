@@ -21,7 +21,7 @@ end
 
 function Windcape_Tooltip:OnTooltipSetItem(tooltip)
     local _, itemLink = tooltip:GetItem()
-    if not item then
+    if not itemLink then
         return
     end
 
