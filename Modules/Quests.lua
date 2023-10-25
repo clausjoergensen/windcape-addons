@@ -13,14 +13,9 @@ end
 function Windcape_Quests:PLAYER_ENTERING_WORLD()
     QuestLogFrame:HookScript("OnShow", function (event, ...)
         for i = 1, 25 do
-            button = _G["QuestLogListScrollFrameButton" .. i]
-            zoneText = GetZoneText()
-            -- Quests in the current zone are expanded by default
-            if button and button:GetText() ~= zoneText then
-                -- Use the texture to determine whether or not the button is already expanded
-                if button:GetNormalTexture():GetTexture() ~= 130821 then
-                    button:Click()
-                end
+            local button = _G["QuestLogListScrollFrameButton" .. i]
+            if button and button:GetNormalTexture():GetTexture() ~= 130821 then
+                button:Click()
             end
         end
     end)
