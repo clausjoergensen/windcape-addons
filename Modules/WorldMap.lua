@@ -42,6 +42,16 @@ function Windcape_WorldMap:OnEnable()
     WorldMapFrame:SetUserPlaced(true)
     WorldMapFrame:SetClampedToScreen(true)
 
+    WorldMapFrame.ScrollContainer:SetIgnoreParentScale(false)
+    WorldMapFrame.ScrollContainer:SetMovable(true)
+    WorldMapFrame.ScrollContainer:SetUserPlaced(true)
+    WorldMapFrame.ScrollContainer:SetClampedToScreen(true)
+
+    WorldMapFrame.ScrollContainer.Child:SetIgnoreParentScale(false)
+    WorldMapFrame.ScrollContainer.Child:SetMovable(true)
+    WorldMapFrame.ScrollContainer.Child:SetUserPlaced(true)
+    WorldMapFrame.ScrollContainer.Child:SetClampedToScreen(true)
+
     -- removes the world map from the default panel system
     -- which is necessary in order to set a custom position
     UIPanelWindows["WorldMapFrame"] = nil
@@ -60,6 +70,8 @@ end
 
 function Windcape_WorldMap:WorldMapFrame_SetScale()
     WorldMapFrame:SetScale(1.0)
+    WorldMapFrame.ScrollContainer:SetScale(1.0)
+    WorldMapFrame.ScrollContainer.Child:SetScale(1.0)
 end
 
 function Windcape_WorldMap:WorldMapFrame_SavePosition()
