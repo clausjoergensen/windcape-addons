@@ -7,10 +7,32 @@ function Windcape_Quests:OnEnable()
 end
 
 function Windcape_Quests:OnDisable()
-    self:unregisterEvent("PLAYER_ENTERING_WORLD")
+    self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
 function Windcape_Quests:PLAYER_ENTERING_WORLD()
+    QuestLogFrame:HookScript("OnUpdate", function (event, ...)
+        wasQuestLogVisible = isQuestLogVisible
+        isQuestLogVisible = QuestLogFrame:IsVisible() 
+        if isQuestLogVisible == wasQuestLogVisible then
+            return
+        end
+        
+        if not isQuestLogVisible then
+            return
+        end
+
+        NUM_QUESTLOG_LIST_SCROLLFRAME_BUTTONS = 25
+        
+        for i = 1, NUM_QUESTLOG_LIST_SCROLLFRAME_BUTTONS do
+            button = _G["QuestLogListScrollFrameButton" .. i]
+            zoneText = GetZoneText()
+            if button and button:GetText() ~= zoneText then -- Quests in the current zone are already expanded
+                button:Click()
+            end
+        end
+    end)
+
     hooksecurefunc(WatchFrame, "SetPoint", function(self)
         if setting then
             return
