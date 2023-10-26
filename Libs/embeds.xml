@@ -16,6 +16,7 @@
 	<Include file="Ace3\AceComm-3.0\AceComm-3.0.xml"/>
 	<Include file="Ace3\AceTab-3.0\AceTab-3.0.xml"/>
 	<Include file="Ace3\AceSerializer-3.0\AceSerializer-3.0.xml"/>
-
-	<Script file="LibWindow-1.1\LibWindow-1.1.lua"/>	
+	
+	<Script file="LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
+	<Script file="LibWindow-1.1\LibWindow-1.1.lua"/>
 </Ui>

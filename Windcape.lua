@@ -14,4 +14,18 @@ function Windcape:OnInitialize()
     self.db = LibStub("AceDB-3.0"):New("WindcapeDB", {
         char = { }
     }, true)
+
+    local LSM = LibStub("LibSharedMedia-3.0")
+
+    -- Mage spell overlays
+    LSM:Register(LSM.MediaType.BACKGROUND, "arcane_missiles", [[Interface\Addons\Windcape\Textures\Mage\arcane_missiles.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "arcane_missiles_1", [[Interface\Addons\Windcape\Textures\Mage\arcane_missiles_1.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "arcane_missiles_2", [[Interface\Addons\Windcape\Textures\Mage\arcane_missiles_2.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "arcane_missiles_3", [[Interface\Addons\Windcape\Textures\Mage\arcane_missiles_3.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "brain_freeze", [[Interface\Addons\Windcape\Textures\Mage\brain_freeze.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "hot_streak", [[Interface\Addons\Windcape\Textures\Mage\hot_streak.blp]])
+
+    -- Druid spell overlays
+    LSM:Register(LSM.MediaType.BACKGROUND, "eclipse_moon", [[Interface\Addons\Windcape\Textures\Druid\eclipse_moon.blp]])
+    LSM:Register(LSM.MediaType.BACKGROUND, "eclipse_sun", [[Interface\Addons\Windcape\Textures\Druid\eclipse_sun.blp]])
 end
