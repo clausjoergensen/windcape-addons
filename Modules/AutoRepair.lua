@@ -21,8 +21,12 @@ function Windcape_AutoRepair:MERCHANT_SHOW()
     end
 
     if repairAllCost <= GetMoney() then
-        RepairAllItems()
-        DEFAULT_CHAT_FRAME:AddMessage("Your items have been repaired for " .. GetCoinText(repairAllCost,", ") .. ".", 255, 255, 0)
+        RepairAllItems(CanGuildBankRepair())
+        if CanGuildBankRepair() then
+            DEFAULT_CHAT_FRAME:AddMessage("Your items have been guild repaired for " .. GetCoinText(repairAllCost,", ") .. ".", 255, 255, 0)
+        else 
+            DEFAULT_CHAT_FRAME:AddMessage("Your items have been repaired for " .. GetCoinText(repairAllCost,", ") .. ".", 255, 255, 0)
+        end
     else
         DEFAULT_CHAT_FRAME:AddMessage("You don't have enough money to repair!", 255, 0, 0)
     end

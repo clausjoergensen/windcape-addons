@@ -26,7 +26,7 @@ function Windcape_Quests:PLAYER_ENTERING_WORLD()
         end
         setting = true
         self:ClearAllPoints()
-        self:SetPoint("TOPLEFT", "UIParent", "TOPLEFT", 20, -20)
+        self:SetPoint("TOPLEFT", "UIParent", "TOPLEFT", 30, -20)
         self:SetHeight(600)
         setting = nil
     end)

@@ -16,7 +16,6 @@ function Windcape_Chat:OnDisable()
         local chatFrame = _G["ChatFrame" .. i]
         self:Unhook(chatFrame, "OnHyperlinkEnter")
         self:Unhook(chatFrame, "OnHyperlinkLeave")
-        self:Unhook(chatFrame, "OnEvent")
     end
 end
 
